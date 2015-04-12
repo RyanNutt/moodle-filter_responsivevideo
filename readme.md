@@ -28,7 +28,7 @@ Here is a screen shot of the settings page.
 
 If enabled, ?rel=0 is added to the end of the embed URL and related videos won't be shown. You probably want to leave this checked so your students don't have a list of other videos begging for clicks when your video is done.
 
-**Use youtube-nocookie.com domain***
+**Use youtube-nocookie.com domain**
 
 When enabled, embeds will use the www.youtube-nocookie.com domain instead of www.youtube.com. I was having issues with embedded videos getting tripped up by YouTube's Safety Mode even though the actual video page was fine. This cleared up the problem.
 
@@ -42,6 +42,6 @@ When working, clearing this checkbox will cause the filter to look for video lin
 
 **Maximum width of video**
 
-*This isn't implemented yet*
-
 When added, this will allow you to put a bit of CSS to put a max width on the video. Normally it expands to 98% of its parent width. 
+
+If using this, it should be a CSS property for width. Ex: `200px` would set a max width of 200 pixels. `50%` would set a max width of 50% of the parent container. You don't need to, and shouldn't include the closing ;. It's added automatically. 

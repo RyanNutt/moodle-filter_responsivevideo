@@ -19,8 +19,7 @@ class filter_responsivevideo extends moodle_text_filter {
     public function filter($text, array $options = array()) {
         global $PAGE;
         if (preg_match_all('/\[rv\](.*?)\[\/rv\]/', $text, $matches)) {
-
-            for ($i = 0; $i < count($matches); ++$i) {
+            for ($i = 0; $i < count($matches[0]); ++$i) {
                 $video_type = $this->get_video_type($matches[1][$i]);
 
                 if (self::$VIDEO_YOUTUBE == $video_type) {
@@ -28,11 +27,19 @@ class filter_responsivevideo extends moodle_text_filter {
                 }
 
                 if (self::$VIDEO_UNKNOWN != $video_type) {
+                    $max_width = get_config('filter_responsivevideo', 'maxwidth'); 
+                
+                    if ($max_width != '') {
+                        
+                        $new_text = '<div style="max-width:' . $max_width . ';">' . $new_text . '</div>';
+                    }
                     $text = str_replace($matches[0][$i], $new_text, $text);
                 }
             }
         }
-        //var_dump($options); 
+
+
+
         return $text;
     }
 
